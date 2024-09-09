@@ -1,0 +1,12 @@
+This file details the changelog of re-toolbox.
+
+-------------------------------------------------------------------------------
+
+[Version 1.0.0]: 2024-09-09
+
+- Initial public release.
+- Add tools:
+    * https://github.com/airbus-seclab/cpu_rec
+    * https://github.com/BatchDrake/vix
+    * https://github.com/google/bindiff
+    * https://github.com/NationalSecurityAgency/ghidra
