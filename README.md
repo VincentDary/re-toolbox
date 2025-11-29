@@ -1,5 +1,5 @@
 
-# RE-TOOLBOX
+# re-toolbox: custom packaging and build of reverse engineering tools
 
 ## Packaged Tools
 
