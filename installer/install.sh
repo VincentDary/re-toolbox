@@ -50,6 +50,7 @@ COLOR_RED='\033[0;31m'
 COLOR_NC='\033[0m'
 
 INSTALLERS=(
+  'qemu.sh'
   'airbus_seclab_cpu_rec.sh'
   'batchdrake_vix.sh'
   'nsa_ghidra.sh'
