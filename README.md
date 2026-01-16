@@ -8,6 +8,7 @@
 | BatchDrake/vix | https://github.com/BatchDrake/vix |
 | airbus-seclab/cpu_rec | https://github.com/airbus-seclab/cpu_rec |
 | NationalSecurityAgency/ghidra | https://github.com/NationalSecurityAgency/ghidra |
+| Battelle/cantordust | https://github.com/Battelle/cantordust |
 | google/bindiff | https://github.com/google/bindiff |
 | qemu-project/qemu | https://gitlab.com/qemu-project/qemu |
 | conda + conda-forge | https://docs.conda.io/projects/conda/en/stable/ |

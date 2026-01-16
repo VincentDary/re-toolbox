@@ -55,8 +55,9 @@ INSTALLERS=(
   'qemu.sh'
   'airbus_seclab_cpu_rec.sh'
   'batchdrake_vix.sh'
-  'nsa_ghidra.sh'
+  'ghidra_battelle_cantordust.sh'
   'google_bindiff.sh'
+  'nsa_ghidra.sh'
 )
 
 ###############################################################################
