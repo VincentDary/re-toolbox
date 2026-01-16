@@ -18,10 +18,14 @@
 #
 ###############################################################################
 
-FROM debian:bookworm-20231009
+FROM debian:trixie-20251103
+
+ARG USERNAME=dev
+ARG USER_UID=1000
+ARG USER_GID=$USER_UID
+ARG CONTAINER_DEV_DIR=/opt/re-toolbox
 
 RUN apt-get update && apt-get upgrade -y
-
 RUN apt-get install -y locales
 
 RUN echo "C.UTF-8 en_US.UTF-8 UTF-8" > /etc/locale.gen
@@ -32,21 +36,13 @@ ENV LANGUAGE C.UTF-8
 ENV LC_ALL C.UTF-8
 ENV LANG C.UTF-8
 
-RUN useradd -m -d /home/toolbox -s /bin/bash -c "toolbox user" -U toolbox
-RUN usermod -L toolbox
-RUN echo "toolbox ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+RUN useradd -m -d /home/$USERNAME -s /bin/bash -c "$USERNAME user" -U $USERNAME
+RUN usermod -L $USERNAME
+RUN echo "$USERNAME ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 RUN echo "root ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
-RUN mkdir /opt/data
-RUN chown -R toolbox: /opt/data
 
-WORKDIR /opt/
+RUN mkdir $CONTAINER_DEV_DIR
+RUN chown -R $USER_UID:$USER_GID $CONTAINER_DEV_DIR
+WORKDIR $CONTAINER_DEV_DIR
 
-ADD install_files /opt/install_files
-RUN chown -R toolbox: /opt/install_files
-ADD /install_scripts /opt/install_scripts
-RUN chown -R toolbox: /opt/install_scripts
-RUN chmod u+x /opt/install_scripts/*.sh
-RUN /opt/install_scripts/install.sh
-
-WORKDIR /opt/data
 CMD exec /bin/bash -c "trap : TERM INT; sleep infinity & wait"

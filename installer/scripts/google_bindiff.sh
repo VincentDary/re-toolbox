@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 ###############################################################################
 #
 # Copyright 2022-2024 Vincent Dary
@@ -18,24 +20,11 @@
 #
 ###############################################################################
 
-INSTALL_BANNER='BatchDrake Vix'
-PKG_DIR='batchdrake_vix'
-SOURCE=(
-  'vix::git+https://github.com/BatchDrake/vix@824b6755157a0f7430a0be0af454487d1492204d'
-)
-SYS_DEPENDENCY=(
-  'autoconf'
-  'libsdl1.2-dev'
-  'libsdl1.2debian'
-  'libtool'
+SOURCES=(
+  'bindiff_8_amd64.deb::https://github.com/google/bindiff/releases/download/v8/bindiff_8_amd64.deb'
 )
 
-install()
+run_install()
 {
-  cd vix || exit
-  libtoolize
-  autoreconf -fvi
-  ./configure
-  make
-  make install
+  apt-get install --yes "./bindiff_8_amd64.deb"
 }

@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 ###############################################################################
 #
 # Copyright 2022-2024 Vincent Dary
@@ -18,13 +20,21 @@
 #
 ###############################################################################
 
-INSTALL_BANNER='Airbus Seclab cpu_rec'
-PKG_DIR='airbus_seclab_cpu_rec'
-SOURCE=(
+SOURCES=(
   'cpu_rec::git+https://github.com/airbus-seclab/cpu_rec.git@6b192399cd56ad6953e568e1263024dd8a4ef38d'
 )
 
-install()
+run_install()
 {
-  ln -s "$(realpath cpu_rec/cpu_rec.py)" /usr/local/bin/cpu_rec.py
+  mv cpu_rec "${INSTALL_TOOLS_DIR}/airbus_seclab_cpu_rec"
+
+  WRAPPER_BIN="${INSTALL_BIN_DIR}/cpu_rec"
+
+  {
+    echo "#!/usr/bin/env bash"
+    echo 'SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )'
+    echo 'python "${SCRIPT_DIR}/../tools/airbus_seclab_cpu_rec/cpu_rec.py"'
+  } >> "${WRAPPER_BIN}"
+
+  chmod ugo=rwx "${WRAPPER_BIN}"
 }

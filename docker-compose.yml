@@ -18,16 +18,19 @@
 #
 ###############################################################################
 
-version: '3'
+version: '3.7'
 
 services:
-  blog:
-    image: re-toolbox
-    container_name: re-toolbox
-    network_mode: "host"
+  fiit:
+    image: ${DOCKER_IMG_NAME}
+    container_name: ${DOCKER_CONTAINER_NAME}
+    init: true
+    network_mode: host
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix
-      - /tmp/re-toolbox-workdir:/opt/data
+      - ${DEV_DIR}:${DEV_DIR_CONTAINER}
     environment:
       - TZ="Europe/Paris"
       - DISPLAY=${DISPLAY}
+    cap_add:
+        - SYS_PTRACE

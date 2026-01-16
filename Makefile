@@ -18,25 +18,17 @@
 #
 ###############################################################################
 
-USER := root
-DKR_IMG_NAME := re-toolbox
-DKR_CONT_NAME := $(DKR_IMG_NAME)
-
-.PHONY:
-
-build:
-	docker build --no-cache --progress plain -t $(DKR_IMG_NAME) .
-
-instance:
-	docker-compose up -d
-
-stop:
-	docker stop $(DKR_IMG_NAME)
-
-clean:
-	docker stop $(DKR_IMG_NAME)
-	docker rm $(DKR_IMG_NAME)
-	docker image rm $(DKR_IMG_NAME)
+DOCKER_IMG_NAME := re-toolbox
+DOCKER_CONTAINER_NAME := $(DOCKER_IMG_NAME)
+USER := dev
 
 connect:
-	docker exec -u $(USER) -it $(DKR_CONT_NAME) bash
+	docker exec -u $(USER) -it $(DOCKER_CONTAINER_NAME) bash
+
+connect_as_root:
+	docker exec -u root -it $(DOCKER_CONTAINER_NAME) bash
+
+clean_docker:
+	docker stop $(DOCKER_CONTAINER_NAME)
+	docker rm $(DOCKER_CONTAINER_NAME)
+	docker image rm $(DOCKER_IMG_NAME)

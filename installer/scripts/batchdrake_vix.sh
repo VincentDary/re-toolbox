@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 ###############################################################################
 #
 # Copyright 2022-2024 Vincent Dary
@@ -18,15 +20,28 @@
 #
 ###############################################################################
 
-INSTALL_BANNER='Google BinDiff'
-PKG_DIR='google_bindiff'
-SOURCE=(
-  'bindiff_8_amd64.deb::https://github.com/google/bindiff/releases/download/v8/bindiff_8_amd64.deb'
+SYS_DEPENDENCIES=(
+  'autoconf'
+  'libsdl1.2-dev'
+  'libsdl1.2debian'
+  'libtool'
 )
 
-install()
+SOURCES=(
+  'vix::git+https://github.com/BatchDrake/vix@824b6755157a0f7430a0be0af454487d1492204d'
+)
+
+run_install()
 {
-  bindiff_deb=${SOURCE[0]%%::*}
-  apt-get install -y "./${bindiff_deb}"
-  rm -f "${bindiff_deb}"
+  tool_dir="${INSTALL_TOOLS_DIR}/batchdrake_vix"
+  mv vix "${tool_dir}"
+  cd "${tool_dir}" || exit 1
+
+  libtoolize
+  autoreconf -fvi
+  ./configure
+  make
+#  make install
+  ln -rs src/vix ../../bin/vix
 }
+
