@@ -56,6 +56,7 @@ INSTALLERS=(
   'airbus_seclab_cpu_rec.sh'
   'batchdrake_vix.sh'
   'ghidra_battelle_cantordust.sh'
+  'ghidra_leveldown_security_svd_loader_ghidra.sh'
   'google_bindiff.sh'
   'nsa_ghidra.sh'
 )
