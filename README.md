@@ -10,3 +10,4 @@
 | NationalSecurityAgency/ghidra | https://github.com/NationalSecurityAgency/ghidra |
 | google/bindiff | https://github.com/google/bindiff |
 | qemu-project/qemu | https://gitlab.com/qemu-project/qemu |
+| conda + conda-forge | https://docs.conda.io/projects/conda/en/stable/ |
