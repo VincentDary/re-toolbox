@@ -51,6 +51,7 @@ COLOR_NC='\033[0m'
 
 INSTALLERS=(
   'conda.sh'
+  'conda_python3.sh'
   'qemu.sh'
   'airbus_seclab_cpu_rec.sh'
   'batchdrake_vix.sh'

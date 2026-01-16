@@ -11,3 +11,4 @@
 | google/bindiff | https://github.com/google/bindiff |
 | qemu-project/qemu | https://gitlab.com/qemu-project/qemu |
 | conda + conda-forge | https://docs.conda.io/projects/conda/en/stable/ |
+| conda python (3.9.2) | https://github.com/python/cpython/tree/v3.9.2 |
